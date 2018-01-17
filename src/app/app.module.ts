@@ -1,18 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 
+import { PanelComponent, PanelUserComponent } from './components';
+import { ViewDirective } from './directive/view.directive';
+import { ConfigService } from './service/config.service';
+
+const panels = [
+  PanelComponent,
+  PanelUserComponent
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ViewDirective,
+    ...panels
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  entryComponents: [
+    ...panels
+  ],
+  providers: [ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
